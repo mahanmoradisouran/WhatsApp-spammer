@@ -1,5 +1,4 @@
 const input = document.querySelectorAll("[contenteditable='true']")[1];
-const btn = document.querySelector('span[data-icon="send"]');
 
 function dispatch(input, message) {
   var evt = new InputEvent('input', {
@@ -7,7 +6,7 @@ function dispatch(input, message) {
   });
   input.innerHTML = message;
   input.dispatchEvent(evt);
-  btn.click();
+  document.querySelector('span[data-icon="send"]').click();
 }
 
 function bombPouria(message, count) {
