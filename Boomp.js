@@ -1,7 +1,7 @@
 const input = document.querySelectorAll("[contenteditable='true']")[1];
 
 function dispatch(input, message) {
-  var evt = new InputEvent('input', {
+  var evt = new InputEvent("input", {
     bubbles: true,
   });
   input.innerHTML = message;
@@ -9,10 +9,20 @@ function dispatch(input, message) {
   document.querySelector('span[data-icon="send"]').click();
 }
 
-function bombPouria(message, count) {
+function boomNow(message, count) {
   let i = 0;
   while (i < count) {
     dispatch(input, message);
     i++;
   }
+}
+
+function boomTimer(message, count, interval) {
+  let i = 0;
+  setInterval(() => {
+    if (count > i) {
+      dispatch(input, message);
+      i++;
+    }
+  }, interval);
 }
